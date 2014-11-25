@@ -4,6 +4,8 @@ third semester project
 
 our take on an async version of cards against humanity
 
+[Project start-page](http://178.62.70.7:8080/index.html)
+
 
 
 
