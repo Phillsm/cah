@@ -1,7 +1,9 @@
 cah
 ===
+third semester project
 
-3. semester project
+our take on an async version of cards against humanity
+
 
 
 
@@ -13,7 +15,7 @@ All: sketched up the beginnings of our domain model and backlog
 
 25/11/2014
 ----------
-Phillip: setup project 'start page' and git project and adjusted seedproject
-tanja: fleshed out backlog
-Anders: fleshed out domain model
+Phillip: setup project 'start page' and git project and adjusted seedproject <br/>
+tanja: fleshed out backlog <br/>
+Anders: fleshed out domain model <br/>
 26/11/2014
