@@ -1,34 +1,32 @@
 package model;
-//=== hau
+
 public class PlayerDetail {
-	  private int ono; // ono and pno are FK's but at the same time a constitute the PK!  
-	  private int pno; // Therefore they are kept in the object (Identity Map)
-	  private int qty;
-	  public PlayerDetail(int on, int pn, int q)
+	  private String userName; // userName and password are Foreign Key's but also a constitute Primary Key!  
+	  private String password; // Therefore they are kept in the object (Identity Map)
+	  private int playerID;
+	  public PlayerDetail(String name, String pass, int pID)
 	  {
-	    ono = on;
-	    pno = pn;
-	    qty = q;
-	  }
-	  
-	  //=== accessors
-	  public int getOno()
-	  {
-	    return ono;
-	  }
-	  public int getPno()
-	  {
-	    return pno;
+	    userName = name;
+	    password = pass;
+	    playerID = pID;
 	  }
 
-	  public int getQty()
-	  {
-	    return qty;
-	  }
+            public String getUserName() {
+                return userName;
+            }
+
+            public String getPassword() {
+                return password;
+            }
+
+            public int getPlayerID() {
+                return playerID;
+            }
+	
 	  
 	  public String toString()
 	  {
-	    return ono + " " + pno + " " + qty;
+	    return userName + " " + password + " " + playerID;
 	  }
 
 }

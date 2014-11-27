@@ -1,4 +1,4 @@
-package controller;
+package database;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,15 +13,15 @@ import java.util.logging.Logger;
 //=== Maps between objects and tables
 //=== Encapsulates SQL-statements
 // hau
-public class OrderMapper {
+public class PlayerInfoMapper {
     //== load an order and the associated order details
 
-    public PlayerInformations getPlayer(int ono, Connection con) {
-        PlayerInformations o = null;
-        String SQLString1 = // get order
+    public PlayerInformations getPlayer(String userName, Connection con) {
+        PlayerInformations playInfo = null;
+        String SQLString1 = // get player
                 "select * "
-                + "from orders "
-                + "where ono = ?";
+                + "from players "
+                + "where userName = ?";
         String SQLString2 = // get order details
                 "select od.pno, od.qty "
                 + "from odetails od "
@@ -29,41 +29,40 @@ public class OrderMapper {
         PreparedStatement statement = null;
 
         try {
-            //=== get order
+            //=== get player
             statement = con.prepareStatement(SQLString1);
-            statement.setInt(1, ono);     // primary key value
+            statement.setString(1, userName);     // primary key value
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                o = new PlayerInformations(ono,
-                        rs.getInt(2),
-                        rs.getInt(3),
-                        rs.getString(4),
-                        rs.getString(5));
+                playInfo = new PlayerInformations(userName,
+                        rs.getString(2),
+                        rs.getInt(3));
+                        
             }
 
             //=== get order details
             statement = con.prepareStatement(SQLString2);
-            statement.setInt(1, ono);          // foreign key value
+            statement.setString(1, userName);          // foreign key value
             rs = statement.executeQuery();
             while (rs.next()) {
-                o.addDetail(new PlayerDetail(
-                        ono,
-                        rs.getInt(1),
+                playInfo.addDetail(new PlayerDetail(
+                        userName,
+                        rs.getString(1),
                         rs.getInt(2)));
             }
         } catch (Exception e) {
-            System.out.println("Fail in OrderMapper - getOrder");
+            System.out.println("Fail in PlayerInfoMapper - getPlayer");
             System.out.println(e.getMessage());
         } finally // must close statement
         {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.out.println("Fail in OrderMapper - getOrder");
+                System.out.println("Fail in PlayerInfoMapper - getPlayer");
                 System.out.println(e.getMessage());
             }
         }
-        return o;
+        return playInfo;
     }
 
     //== Insert new order (tuple)
@@ -73,79 +72,77 @@ public class OrderMapper {
                 "select orderseq.nextval  "
                 + "from dual";
         String SQLString2 =
-                "insert into orders "
-                + "values (?,?,?,?,?)";
+                "insert into players "
+                + "values (?,?,?)";
         PreparedStatement statement = null;
 
         try {
-            //== get unique ono
+            //== get unique userName
             statement = con.prepareStatement(SQLString1);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                o.setOno(rs.getInt(1));
+                o.setUserName(rs.getString(1));
             }
 
             //== insert tuple
             statement = con.prepareStatement(SQLString2);
-            statement.setInt(1, o.getOno());
-            statement.setInt(2, o.getCustomerNo());
-            statement.setInt(3, o.getEmployeeNo());
-            statement.setString(4, o.getReceived());
-            statement.setString(5, o.getShipped());
+            statement.setString(1, o.getUserName());
+            statement.setString(2, o.getPassword());
+            statement.setInt(3, o.getPlayerID());
             rowsInserted = statement.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Fail in OrderMapper - saveNewOrder");
+            System.out.println("Fail in PlayerInfoMapper - saveNewPlayer");
             System.out.println(e.getMessage());
-        } finally // must close statement
+        } finally // close statement
         {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.out.println("Fail in OrderMapper - saveNewOrder");
+                System.out.println("Fail in PlayerInfoMapper - saveNewPlayer");
                 System.out.println(e.getMessage());
             }
         }
         return rowsInserted == 1;
     }
 
-    //== Insert new order detail (tuple)
+    //== Insert new player detail (tuple)
     public boolean saveNewPlayerDetail(PlayerDetail od, Connection con) {
         int rowsInserted = 0;
         String SQLString =
-                "insert into odetails "
+                "insert into odetails " //Skal lige fixes så info kommer i de respektive tabeller
                 + "values (?,?,?)";
         PreparedStatement statement = null;
 
         try {
             //== insert tuple
             statement = con.prepareStatement(SQLString);
-            statement.setInt(1, od.getOno());
-            statement.setInt(2, od.getPno());
-            statement.setInt(3, od.getQty());
+            statement.setString(1, od.getUserName());
+            statement.setString(2, od.getPassword());
+            statement.setInt(3, od.getPlayerID());
             rowsInserted = statement.executeUpdate();
         } catch (Exception e) {
-            System.out.println("Fail in OrderMapper - saveNewOrderDetail");
+            System.out.println("Fail in PlayerInfoMapper - saveNewPlayerDetail");
             System.out.println(e.getMessage());
         } finally // must close statement
         {
             try {
                 statement.close();
             } catch (SQLException e) {
-                System.out.println("Fail in OrderMapper - saveNewOrderDetail");
+                System.out.println("Fail in PlayerInfoMapper - saveNewPlayerDetail");
                 System.out.println(e.getMessage());
             }
         }
         return rowsInserted == 1;
     }
 
-    boolean updateOrder(int ono, int cno, int eno, Connection con) {
+    boolean updateOrder(String userName, String password, int pID, Connection con) {
         int s = 0;
-        String update = "UPDATE orders SET cno = ?, eno = ? WHERE ono = ?";
+        String update = "UPDATE players SET password = ?, pID = ? WHERE userName = ?";
         try {
             PreparedStatement statement = con.prepareStatement(update);
-            statement.setInt(1, cno);
-            statement.setInt(2, eno);
-            statement.setInt(3, ono);
+            statement.setString(1, userName);
+            statement.setString(2, password);
+            statement.setInt(3, pID);
             s = statement.executeUpdate();
         } catch (SQLException ex) { 
         }

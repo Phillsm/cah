@@ -1,83 +1,63 @@
 package model;
 
 import java.util.ArrayList;
-//=== hau
+
 public class PlayerInformations
 {
 
-	  private int ono; 
-	  private int cno; // A FK that should be mapped to a reference
-	  private int eno; // A FK that should be mapped to a reference
-	  private String received;
-	  private String shipped;
+	  private String userName; 
+	  private String password; // A Foreign Key should be be mapped to a reference
+	  private int playerID; // A Foreign Key should be mapped to a reference
 	  private ArrayList<PlayerDetail> playerDetails;
 	
-	  public PlayerInformations(int o, int c, int e, String r, String s)
+	  public PlayerInformations(String name, String pWord, int pID)
 	  {
-	    ono = o;
-	    cno = c;
-	    eno = e;
-	    received = r;
-	    shipped = s;
-	    playerDetails = new ArrayList<PlayerDetail>();
+	    userName = name;
+	    password = pWord;
+	    playerID = pID;
+	    //playerDetails = new ArrayList<PlayerDetail>();
 	  }
-	  
-	  //== accessors
-	  public int getOno()
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getPlayerID() {
+        return playerID;
+    }
+
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
+    }
+
+    public ArrayList<PlayerDetail> getPlayerDetails() {
+        return playerDetails;
+    }
+
+    public void setPlayerDetails(ArrayList<PlayerDetail> playerDetails) {
+        this.playerDetails = playerDetails;
+    }
+    
+	  public void addDetail(PlayerDetail pDetail)
 	  {
-	    return ono;
+	    playerDetails.add(pDetail);
 	  }
-	  public void setOno(int ono)
-	  {
-	    this.ono = ono;
-	  }
-	
-	  public void setCustomer(int c)
-	  {
-	    this.cno = c;
-	  }
-	
-	  public int getCustomerNo()
-	  {
-	    return cno;
-	  }
-	
-	  public void setEmployee(int e)
-	  {
-	    this.eno = e;
-	  }
-	
-	  public int getEmployeeNo()
-	  {
-	    return eno;
-	  }
-	
-	  public void setReceived(String received)
-	  {
-	    this.received = received;
-	  }
-	
-	  public String getReceived()
-	  {
-	    return received;
-	  }
-	
-	  public void setShipped(String shipped)
-	  {
-	    this.shipped = shipped;
-	  }
-	
-	  public String getShipped()
-	  {
-	    return shipped;
-	  }
-	  public void addDetail(PlayerDetail od)
-	  {
-	    playerDetails.add(od);
-	  }
+          
 	  public String toString()
 	  {
-	    return ono + " " + cno + " " + eno + " " + received + " " + shipped;
+	    return userName + " " + password + " " + playerID;
 	  }
 	
 	  String playerDetailsToString()

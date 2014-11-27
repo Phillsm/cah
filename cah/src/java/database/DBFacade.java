@@ -1,5 +1,7 @@
-package controller;
+package database;
 
+import database.PlayerInfoMapper;
+import database.DBConnector;
 import java.sql.Connection;
 import model.*;
 
@@ -10,14 +12,14 @@ import model.*;
 // hau
 public class DBFacade {
 
-	  private OrderMapper om; 
+	  private PlayerInfoMapper om; 
 	  private Connection con;
 	  
 	  //== Singleton start
 	  private static DBFacade instance;
 	 
 	  private DBFacade() {
-		  om 	= new OrderMapper();
+		  om 	= new PlayerInfoMapper();
 		  con 	= new DBConnector().getConnection();  // the connection will be released upon program 
 		  					      // termination by the garbage collector		  
 	  }
@@ -30,9 +32,9 @@ public class DBFacade {
 	  //== Singleton end
 
 	  
-	  public PlayerInformations getPlayer(int ono) 
+	  public PlayerInformations getPlayer(String userName) 
 	  {
-		  return om.getPlayer(ono, con);	      
+		  return om.getPlayer(userName, con);	      
 	  }
 	  
 	  public boolean saveNewPlayerAccount(PlayerInformations o)
@@ -40,12 +42,12 @@ public class DBFacade {
 	    return om.saveNewPlayer(o, con);
 	  }
 	  
-	  public boolean saveNewPlayerDetail(PlayerDetail od)
+	  public boolean saveNewPlayerDetail(PlayerDetail pDetail)
 	  {
-	    return om.saveNewPlayerDetail(od, con);
+	    return om.saveNewPlayerDetail(pDetail, con);
 	  }
 
-    public boolean updatePlayerAccount(int ono, int cno, int eno) {
-        return om.updateOrder(ono, cno, eno, con);
+    public boolean updatePlayerAccount(String userName, String password, int pID) {
+        return om.updateOrder(userName, password, pID, con);
     }	
 }

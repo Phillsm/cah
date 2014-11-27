@@ -6,38 +6,37 @@ package model;
  */
 public class Player {
 
-    public Player(String studentID, String name, String address) {
-        this.studentID = studentID;
-        this.name = name;
-        this.address = address;
+    public Player(String userName, String password, String playerID) {
+        this.userName = userName;
+        this.password = password;
+        this.playerID = playerID;
     }
     
-    private String studentID;
-    private String name;
-    private String address;
+    private String userName;
+    private String password;
+    private String playerID;
 
-    public String getAddress() {
-        return address;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getName() {
-        return name;
+    public String getPassword() {
+        return password;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getStudentID() {
-        return studentID;
+    public String getPlayerID() {
+        return playerID;
     }
 
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
-    }
-
+    public void setPlayerID(String playerID) {
+        this.playerID = playerID;
+    }    
 }
