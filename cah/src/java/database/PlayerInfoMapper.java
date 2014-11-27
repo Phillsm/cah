@@ -14,18 +14,18 @@ import java.util.logging.Logger;
 //=== Encapsulates SQL-statements
 // hau
 public class PlayerInfoMapper {
-    //== load an order and the associated order details
+    //== load a player and the associated player details
 
     public PlayerInformations getPlayer(String userName, Connection con) {
         PlayerInformations playInfo = null;
         String SQLString1 = // get player
                 "select * "
-                + "from players "
+                + "from username "
                 + "where userName = ?";
-        String SQLString2 = // get order details
-                "select od.pno, od.qty "
+        String SQLString2 = // get player details
+                "select od.password, od.playerID "
                 + "from odetails od "
-                + "where od.ono = ? ";         // foreign key match 
+                + "where od.userName = ? ";         // foreign key match 
         PreparedStatement statement = null;
 
         try {
@@ -40,7 +40,7 @@ public class PlayerInfoMapper {
                         
             }
 
-            //=== get order details
+            //=== get player details
             statement = con.prepareStatement(SQLString2);
             statement.setString(1, userName);          // foreign key value
             rs = statement.executeQuery();
@@ -105,48 +105,47 @@ public class PlayerInfoMapper {
         return rowsInserted == 1;
     }
 
-    //== Insert new player detail (tuple)
-    public boolean saveNewPlayerDetail(PlayerDetail od, Connection con) {
-        int rowsInserted = 0;
-        String SQLString =
-                "insert into odetails " //Skal lige fixes så info kommer i de respektive tabeller
-                + "values (?,?,?)";
-        PreparedStatement statement = null;
-
-        try {
-            //== insert tuple
-            statement = con.prepareStatement(SQLString);
-            statement.setString(1, od.getUserName());
-            statement.setString(2, od.getPassword());
-            statement.setInt(3, od.getPlayerID());
-            rowsInserted = statement.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Fail in PlayerInfoMapper - saveNewPlayerDetail");
-            System.out.println(e.getMessage());
-        } finally // must close statement
-        {
-            try {
-                statement.close();
-            } catch (SQLException e) {
-                System.out.println("Fail in PlayerInfoMapper - saveNewPlayerDetail");
-                System.out.println(e.getMessage());
-            }
-        }
-        return rowsInserted == 1;
-    }
-
-    boolean updateOrder(String userName, String password, int pID, Connection con) {
-        int s = 0;
-        String update = "UPDATE players SET password = ?, pID = ? WHERE userName = ?";
-        try {
-            PreparedStatement statement = con.prepareStatement(update);
-            statement.setString(1, userName);
-            statement.setString(2, password);
-            statement.setInt(3, pID);
-            s = statement.executeUpdate();
-        } catch (SQLException ex) { 
-        }
-        return s == 1;
-    }
-
+//    //== Insert new player detail (tuple)
+//    public boolean saveNewPlayerDetail(PlayerDetail od, Connection con) {
+//        int rowsInserted = 0;
+//        String SQLString =
+//                "insert into odetails " //Skal lige fixes så info kommer i de respektive tabeller
+//                + "values (?,?,?)";
+//        PreparedStatement statement = null;
+//
+//        try {
+//            //== insert tuple
+//            statement = con.prepareStatement(SQLString);
+//            statement.setString(1, od.getUserName());
+//            statement.setString(2, od.getPassword());
+//            statement.setInt(3, od.getPlayerID());
+//            rowsInserted = statement.executeUpdate();
+//        } catch (Exception e) {
+//            System.out.println("Fail in PlayerInfoMapper - saveNewPlayerDetail");
+//            System.out.println(e.getMessage());
+//        } finally // must close statement
+//        {
+//            try {
+//                statement.close();
+//            } catch (SQLException e) {
+//                System.out.println("Fail in PlayerInfoMapper - saveNewPlayerDetail");
+//                System.out.println(e.getMessage());
+//            }
+//        }
+//        return rowsInserted == 1;
+//    }
+//
+//    boolean updateOrder(String userName, String password, int pID, Connection con) {
+//        int s = 0;
+//        String update = "UPDATE players SET password = ?, pID = ? WHERE userName = ?";
+//        try {
+//            PreparedStatement statement = con.prepareStatement(update);
+//            statement.setString(1, userName);
+//            statement.setString(2, password);
+//            statement.setInt(3, pID);
+//            s = statement.executeUpdate();
+//        } catch (SQLException ex) { 
+//        }
+//        return s == 1;
+//    }
 }

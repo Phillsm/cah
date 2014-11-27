@@ -36,7 +36,7 @@ public class PlayerController extends HttpServlet {
         
         Player player = new Player(playerID, userName, password);
         request.setAttribute("player", player);
-        request.getRequestDispatcher("success.jsp").forward(request, response);        
+        request.getRequestDispatcher("newjsp.jsp").forward(request, response);        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

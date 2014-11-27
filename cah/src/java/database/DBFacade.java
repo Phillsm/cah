@@ -42,12 +42,12 @@ public class DBFacade {
 	    return om.saveNewPlayer(o, con);
 	  }
 	  
-	  public boolean saveNewPlayerDetail(PlayerDetail pDetail)
-	  {
-	    return om.saveNewPlayerDetail(pDetail, con);
-	  }
-
-    public boolean updatePlayerAccount(String userName, String password, int pID) {
-        return om.updateOrder(userName, password, pID, con);
-    }	
+//	  public boolean saveNewPlayerDetail(PlayerDetail pDetail)
+//	  {
+//	    return om.saveNewPlayerDetail(pDetail, con);
+//	  }
+//
+//    public boolean updatePlayerAccount(String userName, String password, int pID) {
+//        return om.updateOrder(userName, password, pID, con);
+//    }	
 }
