@@ -23,4 +23,8 @@ Anders: [fleshed out domain model](https://www.dropbox.com/s/1hdv404lgqqjfku/dom
 all: chosen sprint 1 backlog
 26/11/2014
 ----------
-Phillip: [High level architecture model](http://178.62.70.7:8080/Highlevel.png)[model.js containing domain model as mongoose schemas](https://github.com/Phillsm/cah/blob/master/server/model/model.js)
+Phillip: [High level architecture model](http://178.62.70.7:8080/Highlevel.png), [model.js containing domain model as mongoose schemas](https://github.com/Phillsm/cah/blob/master/server/model/model.js)
+
+1/12/2014
+---------
+Phillip: [Inserted ~2800 cards into production database mapped to our mongoose model](https://raw.githubusercontent.com/samurailink3/hangouts-against-humanity/master/source/data/cards.js)
