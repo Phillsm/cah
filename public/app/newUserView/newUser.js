@@ -9,8 +9,18 @@ angular.module('myAppRename.newUser', ['ngRoute'])
         });
     }])
 
-    .controller('newUserCtrl', function() {
-    });
+    .controller('newUserCtrl', [
+        '$scope', function($scope){
+            $scope.addNewUser = function(){
+                if(!$scope.username || $scope.username === ''){
+                    return;
+                }
+                console.log($scope.username);
+                $scope.username = '';
+                $scope.password = '';
+            }
+    }]);
+
 /*
     //Skal omskrives til en POST metode, der sender brugernavn og password til databaselagene.
     // Skal først sammenligne brugernavn med eksisterende brugernavne.

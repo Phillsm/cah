@@ -2,9 +2,10 @@ Lots of "to do" here...
 <div class="container">
     <br/>
     <br/>
-    <h1>Sign up for a userAccount</h1>
+    <h1>Welcome to the game.</h1>
+    <h2>Please sign up for a userAccount</h2>
 
-    <form novalidate="novalidate" class="form-horizontal">
+    <form novalidate="novalidate" class="form-horizontal" ng-submit="addNewUser()">
         <div class="control-group">
             <label class="control-label" for="inputUsername">Username: </label>
             <div class="controls">
@@ -17,5 +18,7 @@ Lots of "to do" here...
                 <input type="text" id="inputPassword" ng-model="user.password"/>
             </div>
         </div>
+        <br/>
+        <button type="submit" class="btn btn-warning">Confirm</button>
     </form>
 </div>
