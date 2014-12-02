@@ -10,6 +10,7 @@ angular.module('myAppRename', [
   'myAppRename.filters',
   'myAppRename.view1',
   'myAppRename.view2',
+  'myAppRename.newUser',
   'myAppRename.view3'
 ]).
 config(['$routeProvider', function($routeProvider) {
