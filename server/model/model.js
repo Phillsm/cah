@@ -23,7 +23,7 @@ exports.CardModel = mongoose.model('cards',CardSchema);
 var GameSchema = mongoose.Schema({
     _id: Number,
     starter: {type: Number, ref: 'players'},
-    players: [{type:Number, ref: 'players'}], // all playerss incl starter
+    players: [{type:Number, ref: 'players'}], // all players incl starter
     rounds: [{ // can be filled upon instantiation
 	roundNum: Number,
 	roundQuestion: {type: Number, ref: 'cards'}

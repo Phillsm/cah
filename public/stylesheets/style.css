@@ -7,3 +7,8 @@ a {
   color: #00B7FF;
 }
 
+.newUser-Modal .modal-dialog {
+    height: 200px;
+    width: 150px;
+}
+

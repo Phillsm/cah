@@ -40,7 +40,7 @@
                    ng-model="user.password">
           </div>
           <button type="submit" class="btn btn-success">Login</button>
-          <button ng-controller="UserCreateCtrl" class="btn btn-warning" ng-click="open('lg')">New User</button>
+          <button ng-controller="UserCreateCtrl" class="btn btn-warning" ng-click="open()">New User</button>
 
         </form>
         <div class="navbar-right" ng-show="isAuthenticated">
@@ -53,20 +53,15 @@
     </div>
   </nav>
 
-
-
   <div class="container">
     <div class="alert alert-danger" role="alert" ng-show="error">{{error}}</div>
     <div ng-view="ng-view"></div>
   </div>
 </div>
 
-
-
 <script src="Components/UserCreate/UserCreate-Config.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular-route.js"></script>
-
 <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
 
 <!--<script src="vendor/angular/angular.js"></script>-->
@@ -75,8 +70,6 @@
 <script src="app/view1/view1.js"></script>
 <script src="app/view2/view2.js"></script>
 <script src="app/view3/view3.js"></script>
-<script src="app/newUserView/newUser.js"></script>
-
 <script src="Components/UserCreate/UserCreate-AngularCtrl.js"></script>
 
 <script src="app/components/controllers.js"></script>

@@ -22,7 +22,7 @@ angular.module('myAppRename.UserCreateCtrl', ['ngRoute'])
     $scope.open = function (size) {
 
         var modalInstance = $modal.open({
-            templateUrl: '/cah2/public/Components/UserCreate/UserCreate-ModalDialog.html',
+            templateUrl: '/cah/public/Components/UserCreate/UserCreate-ModalDialog.html',
             controller: 'ModalInstanceCtrl',
             size: size,
             resolve: {
@@ -41,10 +41,10 @@ angular.module('myAppRename.UserCreateCtrl', ['ngRoute'])
             $log.info('Username: ' + DialogResult.Username );
             $log.info('User password: ' + DialogResult.Password );
 
-            //Http ajax to create user. - NOTE: This can be removed if you using line 84 insted of 85
+            //Http ajax to create user. - NOTE: This can be removed if you using line 84 instead of 85
             $http.post(window.conf.UserCreate.Create, {Username: DialogResult.Username, Password : DialogResult.Password  }).
                 success(function(data, status, headers, config) {
-                    //Greate all did go well use is created
+                    //Create all did go well use is created
 
                 }).
                 error(function(data, status, headers, config) {
@@ -53,9 +53,10 @@ angular.module('myAppRename.UserCreateCtrl', ['ngRoute'])
 
                         //Show user new dialog with error message
                         $modal.open({
-                            templateUrl: '/cah2/public/Frameworks/404-Dialog.html',
+                            templateUrl: '/cah/public/Frameworks/404-Dialog.html',
                             controller: 'ModalInstanceCtrl',
-                            size: size,
+                            windowClass: 'newUser-Modal',
+                            //size: size,
                             resolve: {
                                 items: function () {
                                     return window.conf.UserCreate.Create;
