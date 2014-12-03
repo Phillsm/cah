@@ -13,6 +13,12 @@ angular.module('myAppRename', [
   'myAppRename.view1',
   'myAppRename.view2',
   'myAppRename.view3',
+  'myAppRename.myGamesView',
+  'myAppRename.newGameView',
+  'myAppRename.rateGameView',
+  'myAppRename.newUser'
+
+  'myAppRename.view3',
   'myAppRename.UserCreateCtrl' //User creator
 ]).
 config(['$routeProvider', function($routeProvider) {

@@ -19,7 +19,7 @@ angular.module('myAppRename.controllers', []).
     }
 
 
-    $scope.title = "Semester Project";
+    $scope.title = "Cards Against Humanity";
     $scope.username = "";
     $scope.isAuthenticated = false;
     $scope.isAdmin = false;
@@ -39,6 +39,7 @@ angular.module('myAppRename.controllers', []).
           $scope.isAdmin = profile.role == "admin";
           $scope.isUser = !$scope.isAdmin;
           $scope.error = null;
+          $location.path("/view2");
         })
         .error(function (data, status, headers, config) {
           // Erase the token if the user fails to log in
