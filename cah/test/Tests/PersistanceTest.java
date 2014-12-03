@@ -57,7 +57,7 @@ public class PersistanceTest {
     }
     
     @Test
-    public void AUsersHashCanBeUpdated(){
+    public void AUsersHashCanBeUpdates(){
         for(Person x : Testpersons){
             em.persist(x);
         }
