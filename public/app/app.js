@@ -16,9 +16,6 @@ angular.module('myAppRename', [
   'myAppRename.myGamesView',
   'myAppRename.newGameView',
   'myAppRename.rateGameView',
-  'myAppRename.newUser'
-
-  'myAppRename.view3',
   'myAppRename.UserCreateCtrl' //User creator
 ]).
 config(['$routeProvider', function($routeProvider) {
