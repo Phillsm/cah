@@ -3,6 +3,8 @@
 // Declare app level module which depends on views, and components
 angular.module('myAppRename', [
   'ngRoute',
+  'ui.bootstrap', //Added this is a lib and is add to allow bootstrap inside angularjs
+
   'myAppRename.controllers',
   'myAppRename.directives',
   'myAppRename.services',
@@ -10,8 +12,8 @@ angular.module('myAppRename', [
   'myAppRename.filters',
   'myAppRename.view1',
   'myAppRename.view2',
-  'myAppRename.newUser',
-  'myAppRename.view3'
+  'myAppRename.view3',
+  'myAppRename.UserCreateCtrl' //User creator
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.otherwise({redirectTo: '/view1'});
