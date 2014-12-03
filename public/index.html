@@ -40,8 +40,8 @@
             <input type="password" style="width:10em;" placeholder="Password" class="form-control"
                    ng-model="user.password">
           </div>
-          <button type="submit" class="btn btn-success">Sign in</button>
-          <button class="btn btn-warning">New user</button>
+          <button type="submit" class="btn btn-success">Login</button>
+          <a class="btn btn-small btn-warning" href="#/newUser">New user</a>
         </form>
         <div class="navbar-right" ng-show="isAuthenticated">
           <p class="navbar-text">Logged on as: {{username}}</p>
@@ -70,6 +70,7 @@
 <script src="app/view1/view1.js"></script>
 <script src="app/view2/view2.js"></script>
 <script src="app/view3/view3.js"></script>
+<script src="app/newUserView/newUser.js"></script>
 
 <script src="app/myGamesView/myGamesView.js"></script>
 <script src="app/newGameView/newGameView.js"></script>

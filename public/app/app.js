@@ -13,7 +13,8 @@ angular.module('myAppRename', [
   'myAppRename.view3',
   'myAppRename.myGamesView',
   'myAppRename.newGameView',
-  'myAppRename.rateGameView'
+  'myAppRename.rateGameView',
+  'myAppRename.newUser'
 
 ]).
 config(['$routeProvider', function($routeProvider) {
