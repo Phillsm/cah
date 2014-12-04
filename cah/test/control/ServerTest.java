@@ -118,6 +118,36 @@ public class ServerTest {
     
     }
     
+    @Test
+    public void testPUT() throws Exception{
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //hihaq
+                             String person = "deleteperson";
+        String hash = "deletehash";
+        
+        //insert person
+           assertEquals(200,sendMethod("PUT",person,hash,null)); 
+           
+            //can't put another
+        /*user*/            assertEquals(400,sendMethod("PUT",person,hash,null)); 
+        
+                    //with same name in
+        
+                                            assertEquals(200,sendMethod("DELETE",person,hash,null));
+          
+           
+           
+           
+    }
+    
     private int sendMethod(String method, String name, String hash, String newhash) throws Exception {
                 
 		String url = "http://127.0.0.1:4000/auth?player="+name+"&hash="+hash;

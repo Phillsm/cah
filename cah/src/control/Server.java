@@ -34,10 +34,7 @@ public class Server {
     
     int port = 57000;
     String ip = "178.62.70.7";
-//    static String publicFolder = "htmlFiles/";
-//    static String startFile = "index.html";
-//    static String filesUri = "/pages";
-    private static final boolean DEVELOMENT_MODE = false;
+// haq is a massive toilet
     
     public Server(){
         this.port = 57000;
@@ -81,7 +78,7 @@ public class Server {
         @Override
         public void handle (HttpExchange he) throws IOException {
             String response = "";
-            int status = 200;
+            int status = 400;
             String method = he.getRequestMethod().toUpperCase();
             Map<String,String> query = splitQuery(he.getRequestURI());
             String newhash = null;
@@ -150,30 +147,6 @@ public class Server {
         }
     }
     
-    
-    private String getMime(String extension) {
-      String mime = "";
-      switch (extension) {
-        case ".pdf":
-          mime = "application/pdf";
-          break;
-        case ".png":
-          mime = "image/png";
-        case ".css":
-          mime = "text/css";
-          break;
-        case ".js":
-          mime = "text/javascript";
-          break;
-        case ".html":
-          mime = "text/html";
-          break;
-        case ".jar":
-          mime = "application/java-archive";
-          break;
-      }
-      return mime;
-    }
     
 public static Map<String, String> splitQuery(URI url) throws UnsupportedEncodingException {
     Map<String, String> query_pairs = new LinkedHashMap<String, String>();
