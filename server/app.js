@@ -20,10 +20,6 @@ if (process.env.NODE_ENV || typeof global.SKIP_AUTHENTICATION == "undefined") {
   app.use('/adminApi', expressJwt({secret: require("./security/secrets").secretTokenAdmin}));
 }
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-app.locals.pretty = true;
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -37,6 +33,12 @@ app.use(express.static(path.join(__dirname, '../public/app')));
 app.use('/', routes);
 app.use('/adminApi', adminRest);
 app.use('/userApi', userRest);
+
+
+
+////////////////////
+// ERROR HANDLING//
+///////////////////
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

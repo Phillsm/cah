@@ -2,9 +2,13 @@ var express = require('express');
 var router = express.Router();
 
 var mongoose = require('mongoose');
-var user = mongoose.model('User');
+
+
+
+//var user = mongoose.model('User');
 
 /* GET A User From The DataBase */
+/*
 router.get('/user', function(req, res) {
   if(typeof global.mongo_error !== "undefined"){
     res.status(500);
@@ -21,5 +25,6 @@ router.get('/user', function(req, res) {
     res.end(JSON.stringify(users));
   });
 });
+*/
 
 module.exports = router;
