@@ -99,13 +99,14 @@ public class Server {
                                 response = "Authentication Successfull";
                             }
                             else{
-                                status = 401;
+                                status = 400;
                                 response = "Authentication Failed";
                             }
 
                         break;
                     // Update user
                     case "POST":
+                            newhash = query.get("newhash");
                             if(newhash != null && pers.getHash().equals(providedhash)){
                                 pers.setHash(newhash);
                                 db.persistPerson(pers);
@@ -113,7 +114,7 @@ public class Server {
                                 response = "players password is updated";
                             }
                             else{
-                                status = 401;
+                                status = 400;
                                 response = "bad query or bad password";
                             }
                            break;
@@ -125,7 +126,7 @@ public class Server {
                                 response = "players is removed";
                             }
                             else{
-                                status = 401;
+                                status = 400;
                                 response = "bad query or bad password";
                             }
                            break;
@@ -138,7 +139,7 @@ public class Server {
                 response = "Person created";
             }
             else {
-                status = 404;
+                status = 400;
                 response = "Couldn't find that player";
             }   
             //he.getResponseHeaders().add("Content-Type", "application/json");
