@@ -150,8 +150,8 @@ public class ServerTest {
     
     private int sendMethod(String method, String name, String hash, String newhash) throws Exception {
                 
-		String url = "http://127.0.0.1:4000/auth?player="+name+"&hash="+hash;
-                if (newhash != null){url += "&newhash="+newhash;}
+		String url = "http://127.0.0.1:4000/auth?player="+name+"&pass="+hash;
+                if (newhash != null){url += "&newpass="+newhash;}
  
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
