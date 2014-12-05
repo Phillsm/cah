@@ -18,13 +18,15 @@ import model.Person;
 public class DBcontroller {
     
     private EntityManager em;
+    private EntityManagerFactory emf;
+
 
     public DBcontroller() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("cahPU");
-        em = emf.createEntityManager();
+        emf = Persistence.createEntityManagerFactory("cahPU");
     }
     
     public Optional<Person> findperson(String name){
+        em = emf.createEntityManager();
         try{
            Person x = em.find(Person.class, name);
            return Optional.of(x);
@@ -35,6 +37,7 @@ public class DBcontroller {
     }
     
     public void persistPerson(Person p){
+       em = emf.createEntityManager();
        em.getTransaction().begin();
        try{
        em.persist(p);
@@ -47,6 +50,7 @@ public class DBcontroller {
     }
     
     public void removePerson(String name){
+        em = emf.createEntityManager();
         em.getTransaction().begin();
         try{
             Person x = em.find(Person.class, name);
