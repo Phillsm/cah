@@ -1,0 +1,11 @@
+<section class="Authentication" >
+    <div class="Authentication__View">
+        <div class="Authentication__View--LoggedOn" ng-show="!isAuthenticated">
+           <UserLogin></UserLogin>
+           <UserCreate></UserCreate>
+        </div>
+        <div class="Authentication__View--LoggedOut" ng-show="isAuthenticated">
+            <UserCurrent></UserCurrent>
+        </div>
+    </div>
+</section>

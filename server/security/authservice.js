@@ -4,17 +4,23 @@ var server = require('./authserver.js');
 // handle new user
 function newUser(name,password,callback){
     bcrypt.genSalt(10,function(err,salt){
-	if (err){callback(err); return}
-	bcrypt.hash(password,salt,function(err,hash){
-	    if(err){callback(err); return}
+        if (err){
+            callback(err);
+            return;
+        }
+	    bcrypt.hash(password,salt,function(err,hash){
+	        if(err){
+                callback(err);
+                return;
+            }
 	    
-	    //TODO: Fix response after server file is written
-	    server.newUser(name,hash,function(err,response){
-		callback(false,response)
-	    }
-	})
-    })
-}
+            //TODO: Fix response after server file is written
+            server.newUser(name,hash,function(err,response){
+                callback(false,response)
+            });
+	    });
+    });
+};
 
 // handle auth of old user
 function authUser(name,password,callback){

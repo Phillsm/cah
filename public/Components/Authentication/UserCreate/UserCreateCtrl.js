@@ -22,7 +22,7 @@ angular.module('myAppRename.UserCreateCtrl', ['ngRoute'])
     $scope.open = function (size) {
 
         var modalInstance = $modal.open({
-            templateUrl: '/cah/public/Components/UserCreate/UserCreate-ModalDialog.html',
+            templateUrl: '/cah/public/Components/Authentication/UserCreate/UserCreate-ModalDialog.html',
             controller: 'ModalInstanceCtrl',
             size: size,
             resolve: {
@@ -42,30 +42,30 @@ angular.module('myAppRename.UserCreateCtrl', ['ngRoute'])
             $log.info('User password: ' + DialogResult.Password );
 
             //Http ajax to create user. - NOTE: This can be removed if you using line 84 instead of 85
-            $http.post(window.conf.UserCreate.Create, {Username: DialogResult.Username, Password : DialogResult.Password  }).
-                success(function(data, status, headers, config) {
+    //        $http.post(window.conf.UserCreate.Create, {Username: DialogResult.Username, Password : DialogResult.Password  }).
+            //             success(function(data, status, headers, config) {
                     //Create all did go well use is created
 
-                }).
-                error(function(data, status, headers, config) {
+            //  }).
+            //   error(function(data, status, headers, config) {
                     //oh snap! something did go wrong user not created
-                    if (status == 404) { //Ack we cant find the service
+            //                    if (status == 404) { //Ack we cant find the service
 
                         //Show user new dialog with error message
-                        $modal.open({
-                            templateUrl: '/cah/public/Frameworks/404-Dialog.html',
-                            controller: 'ModalInstanceCtrl',
-                            windowClass: 'newUser-Modal',
+            //          $modal.open({
+            //              templateUrl: '/cah/public/Frameworks/404-Dialog.html',
+            //              controller: 'ModalInstanceCtrl',
+            //              windowClass: 'newUser-Modal',
                             //size: size,
-                            resolve: {
-                                items: function () {
-                                    return window.conf.UserCreate.Create;
-                            }
-                        }
-                    });
-                    }
+            //              resolve: {
+            //                  items: function () {
+            //                      return window.conf.UserCreate.Create;
+            //              }
+            //          }
+            //      });
+            //      }
 
-                });
+            //                });
         }, function () {
             //Closed with $modalInstance.dismiss('cancel');
             $log.info('Modal dismissed at: ' + new Date());
