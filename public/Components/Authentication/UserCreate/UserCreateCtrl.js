@@ -7,7 +7,7 @@
  *
  * jsHint: unknown
  */
-/*! UserCreate-AngularCtrl.js - Version: 0.2*/
+/*! UserCreate-AngularCtrl.js - Version: 0.3*/
 
 angular.module('myAppRename.UserCreateCtrl', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
@@ -22,7 +22,7 @@ angular.module('myAppRename.UserCreateCtrl', ['ngRoute'])
     $scope.open = function (size) {
 
         var modalInstance = $modal.open({
-            templateUrl: '/cah/public/Components/Authentication/UserCreate/UserCreate-ModalDialog.html',
+            templateUrl: '/cah/public/Components/Authentication/UserCreate/UserCreateModalDialog.html',
             controller: 'ModalInstanceCtrl',
             size: size,
             resolve: {
