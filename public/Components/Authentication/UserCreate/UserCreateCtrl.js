@@ -77,31 +77,45 @@ angular.module('myAppRename.UserCreateCtrl', ['ngRoute'])
 // It is not the same as the $modal service used above.
 
 //inside dialog
-angular.module('myAppRename.UserCreateCtrl').controller('ModalInstanceCtrl', function ($scope,$http, $modalInstance, items) {
+angular.module('myAppRename.UserCreateCtrl').controller('ModalInstanceCtrl', function ($scope,$http, $modalInstance, items, UserFactory) {
 
     //When click ok
-    $scope.ok = function () {
+    //$scope.ok = function () {
         //Call service to see if username is free
        // $http.post(window.conf.UserCreate.Create, {Username: $scope.Username, Password : $scope.Password  }). //if allow this line instead of line below you remove ajax call outside dialog
-        $http.post(window.conf.UserCreate.isFree, {Username: $scope.Username  }).
-            success(function(data, status, headers, config) {
+      //  $http.post(window.conf.UserCreate.isFree, {Username: $scope.Username  }).
+        //    success(function(data, status, headers, config) {
                 //Create user is free.
-                $modalInstance.close($scope);
-            }).
-            error(function(data, status, headers, config) {
+          //      $modalInstance.close($scope);
+            //}).
+            //error(function(data, status, headers, config) {
                 //oh snap! something did go wrong
-                if (status == 404 || status == 503 ) { //Ack Service is missing - Show message to user
+              //  if (status == 404 || status == 503 ) { //Ack Service is missing - Show message to user
                     //ng-show isServiceMissing is set to true
-                    $scope.isServiceMissing = true;
-                }
-                if (status == 409) { //oh user already exist - Show message to user
+                //    $scope.isServiceMissing = true;
+              //  }
+              //  if (status == 409) { //oh user already exist - Show message to user
                     //ng-show isFree is set to true
-                    $scope.isFree = true;
+              //      $scope.isFree = true;
+//                }
+
+  //          });
+
+  //  };
+
+    $scope.ok = function (){
+        UserFactory.Create($scope.Username, $scope.Password, function(data, status, headers, config) {
+            //oh snap! something did go wrong
+              if (status == 404 || status == 503 ) { //Ack Service is missing - Show message to user
+            //ng-show isServiceMissing is set to true
+                $scope.isServiceMissing = true;
+              }
+              if (status == 409) { //oh user already exist - Show message to user
+            //ng-show isFree is set to true
+                  $scope.isFree = true;
                 }
-
-            });
-
-    };
+    })
+    }
 
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');

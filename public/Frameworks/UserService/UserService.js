@@ -43,7 +43,7 @@ angular.module('myAppRename')
             return;
         }
 
-        $http.post(window.conf.UserLogin.Logout, {UserName: username, Password: password}).success(function(data, status, headers, configs){
+        $http.post(window.conf.UserService.Logout, {UserName: username, Password: password}).success(function(data, status, headers, configs){
             cache.put(cacheId, false);
             callback(data);
 

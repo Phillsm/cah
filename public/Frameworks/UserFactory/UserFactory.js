@@ -1,5 +1,5 @@
 angular.module('myAppRename')
-    .factory('UserFactory', function () {
+    .factory('UserFactory', function ( $http) {
         return {
             Create: function (username,password,callback ) {
                 var user = {
