@@ -14,14 +14,15 @@ router.get('/', function(req, res) {
 
 
 router.post('/authenticate', function (req, res) {
-    if(req.body.username && req.body.password){
+/*    if(req.body.username && req.body.password){
 	auth.authUser(req.body.username,req.body.password,function(err,code){
 	    var user;
 	    var token;
-	    console.log(req.body.username+"with pass "+req.body.password+"authed: "+code)
+	    console.log(req.body.username+" with pass "+req.body.password+" authed: "+code)
 	    if(code === 200){
 	    dblayer.findPlayerByName(req.body.username,function(err,person){
 		user = person;
+		console.log('user found': user);
 		token = jwt.sign(user,require("../security/secrets").secretTokenUser,{expiresInMinutes:60*5});
 		res.json({token:token});
 		return;
@@ -34,8 +35,8 @@ router.post('/authenticate', function (req, res) {
 	 
 	    
 	})
-    }
-   /*
+    }*/
+   
   //TODO: Go and get UserName Password from "somewhere"
   //if is invalid, return 401
    if (req.body.username === 'student' && req.body.password === 'test') {
@@ -61,7 +62,7 @@ router.post('/authenticate', function (req, res) {
     res.json({ token: token });
     return;
   }
-  */
+  
   else{
     res.status(401).send('Wrong user or password');
     return;
