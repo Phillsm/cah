@@ -1,3 +1,4 @@
+/**
 global.TEST_DATABASE = "mongodb://localhost/TestDataBase_xx1243";
 global.SKIP_AUTHENTICATION = true;  //Skip security
 
@@ -7,7 +8,7 @@ var http = require("http");
 var testPort = 9999;
 var testServer;
 var mongoose = require("mongoose");
-var User = mongoose.model("User");
+//var User = mongoose.model("User");
 
 describe('REST API for /user', function () {
   //Start the Server before the TESTS
@@ -51,3 +52,4 @@ describe('REST API for /user', function () {
     })
   });
 });
+**/

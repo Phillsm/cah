@@ -1,4 +1,3 @@
-
 var model = require('./model.js');
 var uuid = require('node-uuid');
 //var random = require('mongoose-random');
@@ -95,6 +94,4 @@ exports.createNewPlayer = function(name,callback){
 	    })
 	}
     })
-    
-    
-}
+};
